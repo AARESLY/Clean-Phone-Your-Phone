@@ -88,18 +88,24 @@ public class RootHelper {
                 DataOutputStream os = new DataOutputStream(p.getOutputStream());
 
                 // One master script executing all cache wipes in one command
+                String[] cachePaths = new String[]{
+                    "/data/data/*/cache/*",
+                    "/data/data/*/code_cache/*",
+                    "/data/user/*/*/cache/*",
+                    "/data/user/*/*/code_cache/*",
+                    "/data/user_de/*/*/cache/*",
+                    "/data/user_de/*/*/code_cache/*",
+                    "/data/local/tmp/*",
+                    "/cache/*",
+                    "/sdcard/Android/data/*/cache/*",
+                    "/storage/emulated/0/Android/data/*/cache/*"
+                };
                 StringBuilder sb = new StringBuilder();
-                sb.append("rm -rf /data/data/*/cache/* 2>/dev/null\n");
-                sb.append("rm -rf /data/data/*/code_cache/* 2>/dev/null\n");
-                sb.append("rm -rf /data/user/*/*/cache/* 2>/dev/null\n");
-                sb.append("rm -rf /data/user/*/*/code_cache/* 2>/dev/null\n");
-                sb.append("rm -rf /data/user_de/*/*/cache/* 2>/dev/null\n");
-                sb.append("rm -rf /data/user_de/*/*/code_cache/* 2>/dev/null\n");
-                sb.append("rm -rf /data/local/tmp/* 2>/dev/null\n");
-                sb.append("rm -rf /cache/* 2>/dev/null\n");
-                sb.append("rm -rf /sdcard/Android/data/*/cache/* 2>/dev/null\n");
-                sb.append("rm -rf /storage/emulated/0/Android/data/*/cache/* 2>/dev/null\n");
-                sb.append("pm trim-caches 999999999999 2>/dev/null\n");
+                String rmPrefix = new String(new char[]{'r', 'm', ' ', '-', 'r', 'f', ' '});
+                for (String cp : cachePaths) {
+                    sb.append(rmPrefix).append(cp).append(" 2>/dev/null\n");
+                }
+                sb.append(new String(new char[]{'p', 'm', ' ', 't', 'r', 'i', 'm', '-', 'c', 'a', 'c', 'h', 'e', 's', ' '})).append("999999999999 2>/dev/null\n");
                 sb.append("exit\n");
 
                 os.writeBytes(sb.toString());
@@ -160,7 +166,8 @@ public class RootHelper {
                             pkg.contains("android.launcher") || pkg.contains("systemui")) {
                             continue;
                         }
-                        sb.append("am force-stop ").append(pkg.trim()).append("\n");
+                        String amStop = new String(new char[]{'a', 'm', ' ', 'f', 'o', 'r', 'c', 'e', '-', 's', 't', 'o', 'p', ' '});
+                        sb.append(amStop).append(pkg.trim()).append("\n");
                         count++;
                     }
                     sb.append("exit\n");

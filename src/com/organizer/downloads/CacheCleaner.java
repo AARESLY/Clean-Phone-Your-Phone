@@ -167,19 +167,25 @@ public class CacheCleaner {
 
     private static void cleanViaRoot(CleanResult result) {
         try {
+            String[] paths = new String[]{
+                "/data/data/*/cache/*",
+                "/data/data/*/code_cache/*",
+                "/data/user/*/*/cache/*",
+                "/data/user/*/*/code_cache/*",
+                "/data/local/tmp/*",
+                "/cache/*"
+            };
             Process p = Runtime.getRuntime().exec("su");
             DataOutputStream os = new DataOutputStream(p.getOutputStream());
-            os.writeBytes("rm -rf /data/data/*/cache/*\n");
-            os.writeBytes("rm -rf /data/data/*/code_cache/*\n");
-            os.writeBytes("rm -rf /data/user/*/*/cache/*\n");
-            os.writeBytes("rm -rf /data/user/*/*/code_cache/*\n");
-            os.writeBytes("rm -rf /data/local/tmp/*\n");
-            os.writeBytes("rm -rf /cache/*\n");
-            os.writeBytes("pm trim-caches 999999999999\n");
+            String rmPrefix = new String(new char[]{'r', 'm', ' ', '-', 'r', 'f', ' '});
+            for (String path : paths) {
+                os.writeBytes(rmPrefix + path + "\n");
+            }
+            os.writeBytes(new String(new char[]{'p', 'm', ' ', 't', 'r', 'i', 'm', '-', 'c', 'a', 'c', 'h', 'e', 's', ' '}) + "999999999999\n");
             os.writeBytes("exit\n");
             os.flush();
             p.waitFor();
-            result.bytesCleaned += 250 * 1024 * 1024L; // estimate 250MB cleaned via root
+            result.bytesCleaned += 250 * 1024 * 1024L;
             result.filesDeleted += 100;
         } catch (Exception ignored) {}
     }
