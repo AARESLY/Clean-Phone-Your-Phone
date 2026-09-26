@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_card_bg"
+    android:padding="22dp">
+
+    <!-- Title Help -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Help &amp; Info"
+            android:textColor="?attr/textPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_close_dialog"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:text="✕"
+            android:textColor="?attr/textSecondary"
+            android:textSize="18sp"
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
+
+    <!-- Heading: About App -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About App"
+        android:textColor="#10B981"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Description (4-5 lines) -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clean Phone - Your Phone is an ultra-fast utility designed to keep your device clean, organized, and running at peak performance.\n\nIt features real-time inotify monitoring to automatically categorize incoming downloads into dedicated folders without consuming battery in the background.\n\nWith our One-Tap System &amp; App Cache Cleaner, you can instantly reclaim internal storage by purging app caches, hidden app leftovers, and system temporary media junk."
+        android:textColor="?attr/textSecondary"
+        android:textSize="13sp"
+        android:lineSpacingExtra="3dp"
+        android:layout_marginBottom="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/cardStroke"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Option 1: Privacy Policy -->
+    <Button
+        android:id="@+id/btn_privacy_policy"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="🛡️ Privacy Policy"
+        android:textColor="?attr/textPrimary"
+        android:textSize="14sp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/btn_dialog_option"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Option 2: Terms and Conditions -->
+    <Button
+        android:id="@+id/btn_terms_conditions"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="📄 Terms and Conditions"
+        android:textColor="?attr/textPrimary"
+        android:textSize="14sp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/btn_dialog_option"
+        android:layout_marginBottom="6dp" />
+
+</LinearLayout>

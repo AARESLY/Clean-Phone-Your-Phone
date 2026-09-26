@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clean Phone - Your Phone</string>
+    <string name="status_running">Active • Kernel Inotify</string>
+    <string name="btn_organize_now">Organize Existing Downloads</string>
+    <string name="desc_info">Monitors folder via kernel inotify and categorizes files automatically.</string>
+    <string name="accessibility_service_name">Clean Phone - Your Phone Automation</string>
+    <string name="accessibility_service_desc">Automates clearing cache and force-stopping background apps in System Settings.</string>
+</resources>

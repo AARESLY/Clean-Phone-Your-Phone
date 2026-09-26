@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="appBg" format="color|reference" />
+    <attr name="cardBg" format="color|reference" />
+    <attr name="cardStroke" format="color|reference" />
+    <attr name="statBg" format="color|reference" />
+    <attr name="statStroke" format="color|reference" />
+    <attr name="textPrimary" format="color|reference" />
+    <attr name="textSecondary" format="color|reference" />
+    <attr name="textMuted" format="color|reference" />
+    <attr name="watchedDirBg" format="color|reference" />
+    <attr name="logBg" format="color|reference" />
+    <attr name="logStroke" format="color|reference" />
+    <attr name="dialogBg" format="color|reference" />
+    <attr name="dialogStroke" format="color|reference" />
+    <attr name="themeToggleBg" format="color|reference" />
+    <attr name="themeToggleText" format="color|reference" />
+    <attr name="btnCloserBgColor" format="color|reference" />
+    <attr name="btnCloserStrokeColor" format="color|reference" />
+    <attr name="btnCloserTextColor" format="color|reference" />
+    <attr name="btnCleanBg" format="color|reference" />
+    <attr name="btnCleanStroke" format="color|reference" />
+    <attr name="btnCleanText" format="color|reference" />
+    <attr name="btnDisorganizeBg" format="color|reference" />
+    <attr name="btnDisorganizeStroke" format="color|reference" />
+    <attr name="btnDisorganizeText" format="color|reference" />
+    <attr name="btnPickerBg" format="color|reference" />
+    <attr name="btnPickerStroke" format="color|reference" />
+    <attr name="btnPickerText" format="color|reference" />
+    <attr name="btnDangerBg" format="color|reference" />
+    <attr name="btnDangerStroke" format="color|reference" />
+    <attr name="helpCircleBg" format="color|reference" />
+    <attr name="helpCircleStroke" format="color|reference" />
+    <attr name="statusBadgeActiveBg" format="color|reference" />
+    <attr name="statusBadgeActiveStroke" format="color|reference" />
+    <attr name="statusBadgeActiveText" format="color|reference" />
+    <attr name="progressTrackBg" format="color|reference" />
+</resources>

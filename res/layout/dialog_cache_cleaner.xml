@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_card_bg"
+    android:padding="22dp">
+
+    <!-- Title & Close -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🧹 Clean Phone - Your Phone"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_cache_dialog_close"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:text="✕"
+            android:textColor="#8E8E9F"
+            android:textSize="18sp"
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose how you want to clean system &amp; app caches:"
+        android:textColor="#94A3B8"
+        android:textSize="13sp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Option 1: Batch Clear All Apps in Settings -->
+    <Button
+        android:id="@+id/opt_batch_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="54dp"
+        android:text="⚡ Clear All Apps (System + User Apps)\nSystem -> Apps Storage -> Clear Cache"
+        android:textColor="#F8FAFC"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical|start"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/btn_dialog_option"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Option 2: Batch Clear User Apps in Settings -->
+    <Button
+        android:id="@+id/opt_batch_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:text="👤 Clear User Installed Apps Only\nSystem -> Apps Storage -> Clear Cache"
+        android:textColor="#F8FAFC"
+        android:textSize="13sp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/btn_dialog_option"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Option 3: Batch Clear System Apps in Settings -->
+    <Button
+        android:id="@+id/opt_batch_system"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:text="⚙️ Clear System Apps Only\nSystem -> Apps Storage -> Clear Cache"
+        android:textColor="#F8FAFC"
+        android:textSize="13sp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/btn_dialog_option"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Option 4: Instant Fast System & External Cache Wipe -->
+    <Button
+        android:id="@+id/opt_fast_wipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:text="🧹 Instant One-Tap Storage &amp; Junk Wipe\nDeep scan /sdcard, app media, and hidden caches"
+        android:textColor="#38BDF8"
+        android:textSize="13sp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/btn_dialog_option"
+        android:layout_marginBottom="4dp" />
+
+</LinearLayout>

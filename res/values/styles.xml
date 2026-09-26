@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Mode Theme (Default) -->
+    <style name="AppTheme.Dark" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="appBg">#0A0A0F</item>
+        <item name="cardBg">#14141E</item>
+        <item name="cardStroke">#222232</item>
+        <item name="statBg">#181826</item>
+        <item name="statStroke">#242436</item>
+        <item name="textPrimary">#F8FAFC</item>
+        <item name="textSecondary">#94A3B8</item>
+        <item name="textMuted">#64748B</item>
+        <item name="watchedDirBg">#12121A</item>
+        <item name="logBg">#0B0D14</item>
+        <item name="logStroke">#1F2438</item>
+        <item name="dialogBg">#12121C</item>
+        <item name="dialogStroke">#242436</item>
+        <item name="themeToggleBg">#1E293B</item>
+        <item name="themeToggleText">#FBBF24</item>
+        <item name="btnCloserBgColor">#181824</item>
+        <item name="btnCloserStrokeColor">#2C2D42</item>
+        <item name="btnCloserTextColor">#F8FAFC</item>
+        <item name="btnCleanBg">#141422</item>
+        <item name="btnCleanStroke">#06B6D4</item>
+        <item name="btnCleanText">#38BDF8</item>
+        <item name="btnDisorganizeBg">#101018</item>
+        <item name="btnDisorganizeStroke">#262638</item>
+        <item name="btnDisorganizeText">#F8FAFC</item>
+        <item name="btnPickerBg">#161624</item>
+        <item name="btnPickerStroke">#28283C</item>
+        <item name="btnPickerText">#38BDF8</item>
+        <item name="btnDangerBg">#1A1215</item>
+        <item name="btnDangerStroke">#3B181E</item>
+        <item name="helpCircleBg">#141420</item>
+        <item name="helpCircleStroke">#475569</item>
+        <item name="statusBadgeActiveBg">#0E2A20</item>
+        <item name="statusBadgeActiveStroke">#10B981</item>
+        <item name="statusBadgeActiveText">#10B981</item>
+        <item name="progressTrackBg">#1A1A28</item>
+        <item name="android:windowBackground">#0A0A0F</item>
+    </style>
+
+    <!-- Light Mode Theme -->
+    <style name="AppTheme.Light" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+        <item name="appBg">#F8FAFC</item>
+        <item name="cardBg">#FFFFFF</item>
+        <item name="cardStroke">#E2E8F0</item>
+        <item name="statBg">#F1F5F9</item>
+        <item name="statStroke">#E2E8F0</item>
+        <item name="textPrimary">#0F172A</item>
+        <item name="textSecondary">#475569</item>
+        <item name="textMuted">#94A3B8</item>
+        <item name="watchedDirBg">#F1F5F9</item>
+        <item name="logBg">#FFFFFF</item>
+        <item name="logStroke">#E2E8F0</item>
+        <item name="dialogBg">#FFFFFF</item>
+        <item name="dialogStroke">#E2E8F0</item>
+        <item name="themeToggleBg">#E2E8F0</item>
+        <item name="themeToggleText">#4338CA</item>
+        <item name="btnCloserBgColor">#FFFFFF</item>
+        <item name="btnCloserStrokeColor">#CBD5E1</item>
+        <item name="btnCloserTextColor">#0F172A</item>
+        <item name="btnCleanBg">#EFF6FF</item>
+        <item name="btnCleanStroke">#38BDF8</item>
+        <item name="btnCleanText">#0284C7</item>
+        <item name="btnDisorganizeBg">#FFFFFF</item>
+        <item name="btnDisorganizeStroke">#CBD5E1</item>
+        <item name="btnDisorganizeText">#1E293B</item>
+        <item name="btnPickerBg">#EFF6FF</item>
+        <item name="btnPickerStroke">#BAE6FD</item>
+        <item name="btnPickerText">#0284C7</item>
+        <item name="btnDangerBg">#FEF2F2</item>
+        <item name="btnDangerStroke">#FECACA</item>
+        <item name="helpCircleBg">#FFFFFF</item>
+        <item name="helpCircleStroke">#94A3B8</item>
+        <item name="statusBadgeActiveBg">#ECFDF5</item>
+        <item name="statusBadgeActiveStroke">#A7F3D0</item>
+        <item name="statusBadgeActiveText">#059669</item>
+        <item name="progressTrackBg">#E2E8F0</item>
+        <item name="android:windowBackground">#F8FAFC</item>
+    </style>
+</resources>
