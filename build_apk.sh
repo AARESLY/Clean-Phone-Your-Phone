@@ -71,7 +71,7 @@ echo "=== Linking APK & Generating R.java ==="
   --auto-add-overlay
 
 echo "=== Compiling Java ==="
-javac -source 17 -target 17 \
+javac -source 11 -target 11 \
   -cp "$PLATFORM" \
   -d "$APP_DIR/build/classes" \
   "$APP_DIR/build/gen/com/organizer/downloads/R.java" \
