@@ -78,10 +78,8 @@ javac -source 11 -target 11 \
   "$APP_DIR"/src/com/organizer/downloads/*.java
 
 echo "=== Dexing with d8 ==="
-(
-  cd "$APP_DIR/build/classes"
-  find . -name "*.class" | xargs "$D8" --lib "$PLATFORM" --output "$APP_DIR/build/dex"
-)
+jar cf "$APP_DIR/build/classes.jar" -C "$APP_DIR/build/classes" .
+"$D8" --lib "$PLATFORM" --output "$APP_DIR/build/dex" "$APP_DIR/build/classes.jar"
 
 echo "=== Adding DEX to APK ==="
 cd "$APP_DIR/build/dex"
