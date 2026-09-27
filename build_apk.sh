@@ -71,7 +71,7 @@ echo "=== Linking APK & Generating R.java ==="
   --auto-add-overlay
 
 echo "=== Compiling Java ==="
-javac -source 11 -target 11 \
+javac -source 8 -target 8 \
   -cp "$PLATFORM" \
   -d "$APP_DIR/build/classes" \
   "$APP_DIR/build/gen/com/organizer/downloads/R.java" \
@@ -79,7 +79,7 @@ javac -source 11 -target 11 \
 
 echo "=== Dexing with d8 ==="
 jar cf "$APP_DIR/build/classes.jar" -C "$APP_DIR/build/classes" .
-"$D8" --lib "$PLATFORM" --output "$APP_DIR/build/dex" "$APP_DIR/build/classes.jar"
+"$D8" --min-api 26 --lib "$PLATFORM" --output "$APP_DIR/build/dex" "$APP_DIR/build/classes.jar"
 
 echo "=== Adding DEX to APK ==="
 cd "$APP_DIR/build/dex"
