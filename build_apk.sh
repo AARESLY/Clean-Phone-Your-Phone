@@ -91,9 +91,7 @@ jar cf "$APP_DIR/build/classes.jar" -C "$APP_DIR/build/classes" .
 "$D8" --min-api 26 --no-desugaring --lib "$PLATFORM" --output "$APP_DIR/build/dex" "$APP_DIR/build/classes.jar"
 
 echo "=== Adding DEX to APK ==="
-cd "$APP_DIR/build/dex"
-zip -u ../app-unaligned.apk classes.dex
-cd "$APP_DIR"
+jar -uf "$APP_DIR/build/app-unaligned.apk" -C "$APP_DIR/build/dex" classes.dex
 
 echo "=== Zipalign ==="
 "$ZIPALIGN" -v -p 4 "$APP_DIR/build/app-unaligned.apk" "$APP_DIR/build/app-aligned.apk"
