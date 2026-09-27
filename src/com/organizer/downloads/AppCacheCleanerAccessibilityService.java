@@ -1008,18 +1008,7 @@ public class AppCacheCleanerAccessibilityService extends AccessibilityService {
                     } catch (Exception ignored) {}
                 }
 
-                boolean sent = dispatchGesture(builder.build(), new GestureResultCallback() {
-                    @Override
-                    public void onCompleted(GestureDescription gestureDescription) {
-                        Log.i(TAG, new StringBuilder("dispatchTapGesture completed at (").append(x).append(",").append(y).append(")").toString());
-                        restoreOverlayTouchability(wasOverlayActive);
-                    }
-                    @Override
-                    public void onCancelled(GestureDescription gestureDescription) {
-                        Log.w(TAG, new StringBuilder("dispatchTapGesture cancelled at (").append(x).append(",").append(y).append(")").toString());
-                        restoreOverlayTouchability(wasOverlayActive);
-                    }
-                }, mHandler);
+                boolean sent = dispatchGesture(builder.build(), new GestureResultCallbackHandler(this, wasOverlayActive, x, y), mHandler);
                 Log.i(TAG, "dispatchGesture invoked: " + sent + " at (" + x + "," + y + ")");
 
                 mHandler.postDelayed(() -> restoreOverlayTouchability(wasOverlayActive), 120);
@@ -1055,16 +1044,7 @@ public class AppCacheCleanerAccessibilityService extends AccessibilityService {
                     } catch (Exception ignored) {}
                 }
 
-                dispatchGesture(builder.build(), new GestureResultCallback() {
-                    @Override
-                    public void onCompleted(GestureDescription gestureDescription) {
-                        restoreOverlayTouchability(wasOverlayActive);
-                    }
-                    @Override
-                    public void onCancelled(GestureDescription gestureDescription) {
-                        restoreOverlayTouchability(wasOverlayActive);
-                    }
-                }, mHandler);
+                dispatchGesture(builder.build(), new GestureResultCallbackHandler(this, wasOverlayActive, startX, startY), mHandler);
                 mHandler.postDelayed(() -> restoreOverlayTouchability(wasOverlayActive), 250);
             } catch (Exception e) {
                 Log.w(TAG, "dispatchSwipeGesture error", e);
@@ -1359,5 +1339,35 @@ public class AppCacheCleanerAccessibilityService extends AccessibilityService {
         mIsPaused = false;
         mPackageQueue.clear();
         hideAllOverlays();
+    }
+
+    private static class GestureResultCallbackHandler extends AccessibilityService.GestureResultCallback {
+        private final AppCacheCleanerAccessibilityService mService;
+        private final boolean mWasOverlayActive;
+        private final int mX;
+        private final int mY;
+
+        public GestureResultCallbackHandler(AppCacheCleanerAccessibilityService service, boolean wasOverlayActive, int x, int y) {
+            this.mService = service;
+            this.mWasOverlayActive = wasOverlayActive;
+            this.mX = x;
+            this.mY = y;
+        }
+
+        @Override
+        public void onCompleted(GestureDescription gestureDescription) {
+            Log.i(TAG, new StringBuilder("Gesture completed at (").append(mX).append(",").append(mY).append(")").toString());
+            if (mService != null) {
+                mService.restoreOverlayTouchability(mWasOverlayActive);
+            }
+        }
+
+        @Override
+        public void onCancelled(GestureDescription gestureDescription) {
+            Log.w(TAG, new StringBuilder("Gesture cancelled at (").append(mX).append(",").append(mY).append(")").toString());
+            if (mService != null) {
+                mService.restoreOverlayTouchability(mWasOverlayActive);
+            }
+        }
     }
 }

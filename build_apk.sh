@@ -35,22 +35,31 @@ if [ -z "$PLATFORM" ] || [ ! -f "$PLATFORM" ]; then
 fi
 
 # Locate build-tools
+# Locate build-tools: prefer SDK_ROOT/build-tools (latest installed), fallback to system or commandlinetools
 BUILD_TOOLS_DIR=""
-if [ -d "/usr/local/share/android-commandlinetools/build-tools/34.0.0" ]; then
-    BUILD_TOOLS_DIR="/usr/local/share/android-commandlinetools/build-tools/34.0.0"
-elif [ -d "$SDK_ROOT/build-tools" ]; then
+if [ -d "$SDK_ROOT/build-tools" ]; then
     BUILD_TOOLS_DIR=$(find "$SDK_ROOT/build-tools" -maxdepth 1 -mindepth 1 -type d 2>/dev/null | sort -V | tail -n 1)
+elif [ -d "/usr/local/share/android-commandlinetools/build-tools/34.0.0" ]; then
+    BUILD_TOOLS_DIR="/usr/local/share/android-commandlinetools/build-tools/34.0.0"
 fi
 
-AAPT2=$(command -v aapt2 2>/dev/null || echo "$BUILD_TOOLS_DIR/aapt2")
-D8=$(command -v d8 2>/dev/null || echo "$BUILD_TOOLS_DIR/d8")
-ZIPALIGN=$(command -v zipalign 2>/dev/null || echo "$BUILD_TOOLS_DIR/zipalign")
-APKSIGNER=$(command -v apksigner 2>/dev/null || echo "$BUILD_TOOLS_DIR/apksigner")
+AAPT2="$BUILD_TOOLS_DIR/aapt2"
+[ ! -x "$AAPT2" ] && AAPT2=$(command -v aapt2 2>/dev/null || echo "$BUILD_TOOLS_DIR/aapt2")
+
+D8="$BUILD_TOOLS_DIR/d8"
+[ ! -x "$D8" ] && D8=$(command -v d8 2>/dev/null || echo "$BUILD_TOOLS_DIR/d8")
+
+ZIPALIGN="$BUILD_TOOLS_DIR/zipalign"
+[ ! -x "$ZIPALIGN" ] && ZIPALIGN=$(command -v zipalign 2>/dev/null || echo "$BUILD_TOOLS_DIR/zipalign")
+
+APKSIGNER="$BUILD_TOOLS_DIR/apksigner"
+[ ! -x "$APKSIGNER" ] && APKSIGNER=$(command -v apksigner 2>/dev/null || echo "$BUILD_TOOLS_DIR/apksigner")
 
 echo "=== Build Environment ==="
 echo "APP_DIR: $APP_DIR"
 echo "SDK_ROOT: $SDK_ROOT"
 echo "PLATFORM: $PLATFORM"
+echo "BUILD_TOOLS_DIR: $BUILD_TOOLS_DIR"
 echo "AAPT2: $AAPT2"
 echo "D8: $D8"
 echo "ZIPALIGN: $ZIPALIGN"
@@ -71,7 +80,7 @@ echo "=== Linking APK & Generating R.java ==="
   --auto-add-overlay
 
 echo "=== Compiling Java ==="
-javac -source 8 -target 8 -XDstringConcat=inline \
+javac -source 8 -target 8 -parameters -XDstringConcat=inline \
   -cp "$PLATFORM" \
   -d "$APP_DIR/build/classes" \
   "$APP_DIR/build/gen/com/organizer/downloads/R.java" \
@@ -79,7 +88,7 @@ javac -source 8 -target 8 -XDstringConcat=inline \
 
 echo "=== Dexing with d8 ==="
 jar cf "$APP_DIR/build/classes.jar" -C "$APP_DIR/build/classes" .
-"$D8" --min-api 26 --lib "$PLATFORM" --output "$APP_DIR/build/dex" "$APP_DIR/build/classes.jar"
+"$D8" --min-api 26 --no-desugaring --lib "$PLATFORM" --output "$APP_DIR/build/dex" "$APP_DIR/build/classes.jar"
 
 echo "=== Adding DEX to APK ==="
 cd "$APP_DIR/build/dex"
