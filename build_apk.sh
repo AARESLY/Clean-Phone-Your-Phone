@@ -71,7 +71,7 @@ echo "=== Linking APK & Generating R.java ==="
   --auto-add-overlay
 
 echo "=== Compiling Java ==="
-javac -source 8 -target 8 \
+javac -source 8 -target 8 -XDstringConcat=inline \
   -cp "$PLATFORM" \
   -d "$APP_DIR/build/classes" \
   "$APP_DIR/build/gen/com/organizer/downloads/R.java" \

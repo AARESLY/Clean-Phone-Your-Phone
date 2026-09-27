@@ -1011,12 +1011,12 @@ public class AppCacheCleanerAccessibilityService extends AccessibilityService {
                 boolean sent = dispatchGesture(builder.build(), new GestureResultCallback() {
                     @Override
                     public void onCompleted(GestureDescription gestureDescription) {
-                        Log.i(TAG, "dispatchTapGesture completed at (" + x + "," + y + ")");
+                        Log.i(TAG, new StringBuilder("dispatchTapGesture completed at (").append(x).append(",").append(y).append(")").toString());
                         restoreOverlayTouchability(wasOverlayActive);
                     }
                     @Override
                     public void onCancelled(GestureDescription gestureDescription) {
-                        Log.w(TAG, "dispatchTapGesture cancelled at (" + x + "," + y + ")");
+                        Log.w(TAG, new StringBuilder("dispatchTapGesture cancelled at (").append(x).append(",").append(y).append(")").toString());
                         restoreOverlayTouchability(wasOverlayActive);
                     }
                 }, mHandler);
